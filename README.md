@@ -1,93 +1,200 @@
-# Blockchain Explorer Classic
+`**See and Update README-how-to.md**`
 
+# ETC Explorer [Opulent-X]
 
+<img src="public/img/explorer-logo.png" alt="ETC Explorer logo" height="200" />
 
-## Getting started
+<b>Live Version: [etherhub.io](http://etherhub.io)</b>
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Follow the project progress at: [ETC Block Explorer Development](https://github.com/ethereumclassic/explorer)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Local installation
 
-## Add your files
+Clone the repo
 
-- [ ] [Create](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+`git clone https://github.com/ethereumclassic/explorer`
+
+Download [Nodejs and npm](https://docs.npmjs.com/getting-started/installing-node "Nodejs install") if you don't have them
+
+Install dependencies:
+
+`npm install`
+
+Install mongodb:
+
+MacOS: `brew install mongodb`
+
+Ubuntu: `sudo apt-get install -y mongodb-org`
+
+## Populate the DB
+
+This will fetch and parse the entire blockchain.
+
+Setup your configuration file: `cp config.example.json config.json`
+
+Edit `config.json` as you wish
+
+Basic settings:
+```json
+{
+    "nodeAddr":     "localhost",
+    "wsPort":       8546,
+    "startBlock":   0,
+    "endBlock":     "latest",
+    "quiet":        true,
+    "syncAll":      true,
+    "patch":        true,
+    "patchBlocks":  100,
+    "bulkSize":     100,
+    "settings": {
+        "symbol": "ETC",
+        "name": "Ethereum Classic",
+        "title": "Ethereum Classic Block Explorer",
+        "author": "Elaine",
+        "rss": "https://ethereumclassic.org",
+        "reddit": "https://www.reddit.com/r/EthereumClassic",
+        "twitter": "https://twitter.com/eth_classic",
+        "linkedin": "https://www.linkedin.com/company/ethereum-classic",
+        "github": "https://github.com/ethereumclassic",
+        "logo": "/img/explorer-logo.png",
+        "copyright": "2019 &copy; Ethereum Classic.",
+        "poweredbyCustom": false,
+        "poweredbyEtcImage": "/img/powered-by-etcexplorer-w.png",
+        "poweredbyEtc": true,
+        "useRichList": true,
+        "useFiat": true,
+        "miners": {
+            "0xdf7d7e053933b5cc24372f878c90e62dadad5d42": "EtherMine",
+            "0xc91716199ccde49dc4fafaeb68925127ac80443f": "F2Pool",
+            "0x9eab4b0fc468a7f5d46228bf5a76cb52370d068d": "NanoPool",
+            "0x1C0FA194a9d3B44313DCD849F3C6be6Ad270a0A4": "MiningPoolHub",
+            "0x4750e296949b747df1585aa67beee8be903dd560": "UUPool",
+            "0xef224fa5fad302b51f38898f4df499d7af127af0": "91pool",
+            "0x0073Cf1B9230cF3EE8Cab1971B8DbeF21eA7B595": "2miners",
+            "0x4c2b4e716883a2c3f6b980b70b577e54b9441060": "ETCPool PL",
+            "0xd144e30a0571aaf0d0c050070ac435deba461fab": "Clona Network",
+            "0x568f58bf1667504fdf5aa02d776c156f940178a5": "Whalesburg",
+            "0x3b2d2613ad66d66ee0cb518aeeccc98e9e3b19c0": "private(0x3b2d2613)",
+            "0x919973eb38844313dc31c41e140700d6e333f8d5": "private(0x919973eb)",
+            "0xb205f337bad80e28351c7540b741c81470c4927f": "private(0xb205f337)",
+            "0x232cad0429e653ab610fbcf7e7ebee2f05f28410": "private(0x232cad04)",
+            "0x999c2944807874d3677ee3c6065c8a8a92721ac5": "NinjaPool.jp",
+            "0x39cd14977601184b7da518fd352261aad0cb9fd3": "91pool",
+            "0xf35074bbd0a9aee46f4ea137971feec024ab704e": "Solo Mining Pools",
+            "0xa97ed75172773ec705c2c78d999d3203199101bd": "epool",
+            "0x58b3cabd0c5c777da2c1c4d4f7ecc8afe5674f20": "private(0x58b3cabd0)",
+            "0x87cfd09c483fe65352456bb26c784a0e4c4ba389": "ArsMine",
+            "0x5bc9ccbd3115cefb6f382d33e8ce2a0aba084da4": "private(0x5bc9ccbd3)",
+            "0x4924414988feb1ee16e29298509f96317400eb57": "private(0x492441498)",
+            "0xa9a926bed50dc038b20bb20de361e4c35aae51fc": "private(0xa9a926bed)",
+            "0x0073cf1b9230cf3ee8cab1971b8dbef21ea7b595": "2miners",
+            "0x004730417cd2b1d19f6be2679906ded4fa8a64e2": "2miners",
+            "0x1c0fa194a9d3b44313dcd849f3c6be6ad270a0a4": "MiningPoolHub"
+         }
+    }
+}
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/opulent-x-suite/blockchain-explorer/blockchain-explorer-classic.git
-git branch -M main
-git push -uf origin main
+
+| Name  | Explanation |
+|-------------|-----|
+| `nodeAddr` | Your node API RPC address. |
+| `wsPort` | Your node API WS (Websocket) port. (RPC HTTP port is deprecated on Web3 1.0 see https://web3js.readthedocs.io/en/1.0/web3.html#value) |
+| `startBlock` | This is the start block of the blockchain, should always be 0 if you want to sync the whole ETC blockchain. |
+| `endBlock` | This is usually the 'latest'/'newest' block in the blockchain, this value gets updated automatically, and will be used to patch missing blocks if the whole app goes down. |
+| `quiet` | Suppress some messages. (admittedly still not quiet) |
+| `syncAll` | If this is set to true at the start of the app, the sync will start syncing all blocks from lastSync, and if lastSync is 0 it will start from whatever the endBlock or latest block in the blockchain is. |
+| `patch` | If set to true and below value is set, sync will iterated through the # of blocks specified. |
+| `patchBlocks` | If `patch` is set to true, the amount of block specified will be check from the latest one. |
+| `useRichList` | If `useRichList` is set to true, explorer will update account balance for richlist page. |
+| `useFiat` | If `useFiat` is set to true, explorer will show price for account & tx page. ( Disable for testnets )|
+
+### Mongodb Auth setting.
+
+#### Configure MongoDB
+
+In view of system security, most of mongoDB Admin has setup security options, So, You need to setup mongodb auth informations.
+Switch to the built-in admin database:
+
+```
+$ mongo
+$ > use admin
 ```
 
-## Integrate with your tools
+1. Create an administrative user  (if you have already admin or root of mongodb account, then skip it)
 
-- [ ] [Set up project integrations](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://gitlab.com/opulent-x-suite/blockchain-explorer/blockchain-explorer-classic/-/settings/integrations)
+```
+# make admin auth and role setup
+$ > db.createUser( { user: "admin", pwd: "<Enter a secure password>", roles: ["root"] } )
+```
 
-## Collaborate with your team
+And, You can make Explorer's "explorerDB" database with db user accounts "explorer" and password "some_pass_code".
 
-- [ ] [Invite team members and collaborators](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+```
+$ > use explorerDB
+$ > db.createUser( { user: "explorer", pwd: "<Enter a secure password>", roles: ["dbOwner"] } )
+$ > quit()
+```
 
-## Test and Deploy
+Above dbuser explorer will full access explorerDB and clustor setting will be well used on monitoring the multiple sharding and replication of multiple mongodb instances.
+Enable database authorization in the MongoDB configuration file /etc/mongodb.conf by appending the following lines:
 
-Use the built-in continuous integration in GitLab.
+```
+auth=true
+```
 
-- [ ] [Get started with GitLab CI/CD](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Restart MongoDB and verify the administrative user created earlier can connect:
 
-***
+```
+$ sudo service mongodb restart
+$ mongo -u admin -p your_password --authenticationDatabase=admin
+```
 
-# Editing this README
+If everything is configured correctly the Mongo Shell will connect and
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://gitlab.com/-/experiment/new_project_readme_content:f70dc8201f947425bef4476d93d672e7?https://www.makeareadme.com/) for this template.
+```
+$ > show dbs
+```
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+will show db informations.
+and You can add modified from  ./db.js:103 lines,  add auth information and mongodb connect options.
 
-## Name
-Choose a self-explaining name for your project.
+```
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/explorerDB', {
+  useMongoClient: true
+  // poolSize: 5,
+  // rs_name: 'myReplicaSetName',
+  // user: 'explorer',
+  // pass: 'yourdbpasscode'
+});
+```
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+And explore it.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Run
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+The below will start both the web-gui and sync.js (which populates MongoDB with blocks/transactions).
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+`npm start`
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+You can leave sync.js running without app.js and it will sync and grab blocks based on config.json parameters
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+`npm run sync`
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Enabling stats requires running a separate process:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+`npm run stats`
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Enabling richlist requires running a separate process:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+`npm run rich`
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+You can configure intervals (how often a new data point is pulled) and range (how many blocks to go back) with the following:
 
-## License
-For open source projects, say how it is licensed.
+`RESCAN=100:7700000 node tools/stats.js` (New data point every 100 blocks. Go back 7,700,000 blocks).
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Docker installation
 
+Set `nodeAddr` in `config.json` to `host.docker.internal`
+
+Run `docker-compose up`
