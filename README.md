@@ -193,6 +193,20 @@ You can configure intervals (how often a new data point is pulled) and range (ho
 
 `RESCAN=100:7700000 node tools/stats.js` (New data point every 100 blocks. Go back 7,700,000 blocks).
 
+## Production Mode
+Use npm to install the latest version of PM2 on your server:
+```
+sudo npm install pm2@latest -g
+```
+PM2 now supports npm start:
+```
+pm2 start npm -- start
+```
+
+To assign a name to the PM2 process, use the `--name` option:
+```
+pm2 start npm --name "app name" -- start
+```
 ## Docker installation
 
 Set `nodeAddr` in `config.json` to `host.docker.internal`
