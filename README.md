@@ -207,6 +207,9 @@ To assign a name to the PM2 process, use the `--name` option:
 ```
 pm2 start npm --name "app name" -- start
 ```
+[PM2 Process Management Quick Start](https://pm2.keymetrics.io/docs/usage/quick-start/)- just in case may problema
+
+
 ## Docker installation
 
 Set `nodeAddr` in `config.json` to `host.docker.internal`
