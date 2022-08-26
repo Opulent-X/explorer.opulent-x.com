@@ -7,8 +7,8 @@
                 <p> {{settings.about}} </p>
                 <br>
                 <span ng-bind-html="settings.poweredbyCustom" ng-if="settings.poweredbyCustom">{{settings.poweredbyCustom}}</span>
-                <span ng-if="!settings.poweredbyCustom && settings.poweredbyEtcImage"><a href="https://zelcore.io" target="_blank"><img height="51px" src="{{settings.poweredbyEtcImage}}"></a></span>
-                <p ng-if="!settings.poweredbyCustom && !settings.poweredbyEtcImage && settings.poweredbyEtc"> Powered by <a href="https://zelcore.io" target="_blank">ETC ZelCore Explorer</a> </p>
+                <span ng-if="!settings.poweredbyCustom && settings.poweredbyEtcImage"><a href="https://start.opulent-x.com" target="_blank"><img height="51px" src="{{settings.poweredbyEtcImage}}"></a></span>
+                <p ng-if="!settings.poweredbyCustom && !settings.poweredbyEtcImage && settings.poweredbyEtc"> Powered by <a href="https://start.opulent-x.com" target="_blank">Opulent-X Blockchain Explorer</a> </p>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                 <h2>Check us out at</h2>
@@ -25,13 +25,16 @@
                     <li>
                         <a ng-show="settings.github" href="{{settings.github}}" data-original-title="github" class="github"></a>
                     </li>
+                    <li>
+                        <a ng-show="settings.facebook" href="{{settings.facebook}}" data-original-title="facebook" class="facebook"></a>
+                    </li>
                 </ul>
             </div>
             <div ng-show="settings.symbol == 'ETC'" class="col-md-6 col-sm-12 col-xs-12 footer-block">
                 <h2>Help, it's not working</h2>
                 <address class="margin-bottom-40"> 
-                    <br>Try live support <a href="https://faq.zelcore.io">ZelCore Support Center</a>
-                    <br> <a href="mailto:support@zeltechnologies.com">Email support</a>
+                    <br>Try live support <a href="https://faq.opulent-x.com">Opulent-X Support Center</a>
+                    <br> <a href="mailto:info@opulent-x.com">Email support</a>
                 </address>
             </div>
         </div>
