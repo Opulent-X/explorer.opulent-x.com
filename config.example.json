@@ -13,7 +13,7 @@
         "title": "Opulent-X BETA",
         "author": "Bo Garcia",
         "contact": "bo.garcia@opulent-x.com",
-        "about": "Opulent-X BETA is a Ethereum Layer 2 Blockchain for Entrepreneurs, Technologists and Adventurists ",
+        "about": "Opulent-X BETA is a Ethereum Layer 2 Blockchain for Entrepreneurs Technologists and Adventurists ",
         "rss": "https://opulentx-beta",
         "reddit": "https://www.reddit.com/r/zelcash",
         "twitter": "https://twitter.com/zel_core",
@@ -27,7 +27,7 @@
         "poweredbyEtcImage": "/img/powered-by-etcexplorer.png",
         "poweredbyEtc": true,
         "miners": {
-            "0xD7b62CaA7d4524D52ab2d8ab46b6A492Ac2C0e89": "BETA Miner One",
+            "0xD7b62CaA7d4524D52ab2d8ab46b6A492Ac2C0e89": "BETA Miner One"
          }
     }
 }
